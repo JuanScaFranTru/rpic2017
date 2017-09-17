@@ -1,0 +1,303 @@
+\documentclass[10pt]{beamer}
+
+\usetheme{metropolis}
+\usepackage{appendixnumberbeamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\title{XVII Reunión de trabajo en Procesamiento de la Información y Control}
+\subtitle{Modelando el patrón temporal del vector de dengue, Chikungunya y Zika a
+  partir de información satelital con redes neuronales}
+
+\date{Septiembre de 2017}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Autores}
+	\begin{alertblock}{UNC - FaMAF}
+    Francisco C. Trucco, Juan M. Scavuzzo
+	\end{alertblock}
+
+	\begin{alertblock}{Instituto Gulich}
+    Carolina B.Tauro
+	\end{alertblock}
+
+	\begin{alertblock}{Fundación Mundo Sano}
+    Alba German, Manuel Espinosa, Marcelo Abril
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}{Contenidos}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introducción}
+
+\begin{frame}{Ecoepidemiología y epidemiología satelital}
+
+Los cambios e interacciones del medio ambiente tienen una fuerte influencia
+sobre los factores que determinan diversas enfermedades. Esto nos da la
+oportunidad de estudiar dichos factores ambientales para entender cómo
+condicionan las enfermedades humanas.
+
+De allí surge la ecoepidemiología, en la cual se intenta comprender cuáles son
+los factores del medio ambiente que significan un riesgo para la salud del ser
+humano.
+
+Hasta hace poco tiempo ese estudio ecológico se realizaba exclusivamente con
+información recogida en el campo, tales como temperatura, precipitaciones,
+humedad relativa, salinidad, vegetación, fauna, entre otros.
+
+Pero hoy en día, se cuenta con una herramienta adicional de gran importancia y
+que define un nuevo concepto en la epidemiología, el uso de información e
+imágenes satelitales.
+
+Estas herramientas abren una subespecialidad de la ecoepidemiología: la llamada
+epidemiología satelital.
+
+La epidemiología satelital puede ser pensada como una aplicación de segunda
+generación de la información sensada remotamente donde el objetivo (i.e., el
+vector o el huésped) no se detecta directamente de la imagen satelital. 
+
+\end{frame}
+
+\begin{frame}{Dengue}
+
+  El dengue es una de las enfermedades transmitidas por vectores más importantes
+  en el mundo.
+
+  El vector de esta enfermedad en América Latina es el Aedes aegypti, mosquito
+  peridoméstico que se cría preferentemente en contenedores artificiales.
+
+  La incidencia del dengue ha aumentado dramáticamente en las últimas décadas,
+  con una tendencia creciente de brotes en Sudamérica en los últimos años. A
+  esto se le suma la creciente incidencia del virus de chikungunya y zika, cuyo
+  principal vector es la misma especie de mosquito.
+
+  El uso de ovitrampas constituye un método efectivo para proporcionar datos
+  útiles sobre la distribución espacial y temporal del Aedes aegypti y otras
+  especies de mosquitos que habitan contenedores, lo que permite obtener un
+  mejor conocimiento de su actividad.
+
+\end{frame}
+
+\begin{frame}{Aprendizaje Automático (ML)}
+
+El aprendizaje automático ha resultado ser un enfoque empírico eficaz para
+regresiones y clasificaciones de sistemas no lineales. Por esto, el aprendizaje
+automático es ideal para abordar aquellos problemas donde se dispone de un
+número importante de observaciones, pero el conocimiento teórico es aún
+incompleto.
+
+Las técnicas del aprendizaje automático han demostrado ser útiles para un gran
+número de aplicaciones en geociencias, tanto para tierra, océanos y atmósfera, y
+en algoritmos de extracción de información bio-geofisica.
+
+\end{frame}
+
+\begin{frame}{Enfoques del Aprendizaje Automático}
+
+Los distintos enfoques del aprendizaje automático mayormente utilizados en
+geociencias y sensado remoto incluyen [7]:
+
+\begin{itemize}
+\item artificial neural networks (ANN)
+\item support vector machines (SVM)
+\item self-organizing map (SOM)
+\item decision trees (DT)
+\item random forests (RF)
+\item genetic algorithms (GA)
+\end{itemize}
+
+Esta área del Geoscience and Remote Sensing (GRS) es relativamente nueva y
+extremadamente prometedora ([7], [8]).
+
+En particular, las Redes Neuronales Artificiles, son ampliamente utilizadas para
+clasificación, pero también para predicciones de series de tiempo ([9], [10],
+[11], [12]).
+
+De hecho, una exploración en la base bibliográfica scopus nos arroja una
+cantidad de más de 4000 publicaciones que incluyen remote sensing y neural
+network con 311 publicaciones para el 2016.
+
+\end{frame}
+
+\begin{frame}{Scikit Learn}
+  Scikit Learn es una librería de Python para aprendizaje automático que
+  implementa muchos algoritmos de clasificación y regresión.  
+
+  ¿Por qué esta librería? ¿Por qué Python?
+
+  \begin{itemize} 
+  \item Python es uno de los lenguajes que han presenciado un crecimiento
+    formidable en el ámbito académico en los últimos años además de ser uno de
+    los más usados.
+  \item Tanto Python como Scikit Learn son software libre.
+  \item Hay una comunidad muy activa.
+  \item Facilita el trabajo interdisciplinario debido a la baja complejidad de
+    la herramienta.
+  \end{itemize}
+
+  Uno de los objetivos de este trabajo fue usar algoritmos y herramientas
+  \textbf{off-the-shelf}.
+
+\end{frame}
+
+\begin{frame}{iRace}
+
+  Como veremos luego, algunos modelos dependen de parámetros. Encontrar la mejor
+  configuración de esos parámetros para resolver un problema constituye todo un
+  desafío.
+
+  Una herramienta llamada iRace (Iterated Racing for Automatic Algorithm
+  Configuration) fue utilizada para realizar encontrar las mejores
+  configuraciones de parámetros dadas las instancias del problema.
+
+  Queremos aclarar que está implementada en R y también es software libre.
+
+\end{frame}
+
+\begin{frame}{Área de estudio y Datos de Campo}
+
+La Ciudad de Tartagal se encuentra en la base de las sierras subandinas
+argentinas en la provincia de Salta. La ciudad está rodeada de bosques nativos
+subtropicales y cultivos. El clima es subtropical, con una temperatura media
+anual de unos 23; con máximas promedio de 39 y mínimas promedio de 9. La
+precipitación anual es de unos 1100 mm, con una estación seca de junio a octubre
+y una estación húmeda de noviembre a mayo con una precipitación mensual media de
+160 mm mensuales. El área urbana de la ciudad de Tartagal cubre aproximadamente
+15 $km^2$ y está compuesta por unas 18.000 viviendas.
+
+%% Acá deberíamos poner una imagen y tratar de decir mucho menos que lo que está
+%% escrito.
+
+\end{frame}
+
+\begin{frame}{Variables}
+Para caracterizar el hábitat de los mosquitos se obtuvieron variables derivadas
+de imágenes de satelitales (principalmente del sensor MODIS), a saber: NDVI,
+NDWI, LST y la precipitación.
+
+El índice de vegetación de diferencia normalizada (NDVI) y el índice diferencial
+de agua normalizada (NDWI) se obtuvo a partir del producto del sensor MODIS
+MOD13Q1 (16 días) con una resolución espacial de 250m.
+
+Para el LST se seleccionó el producto satelital MOD11A2, que se almacena en una
+grilla de 1 km como los valores medios de LSTs de cielo claro durante un período
+de 8 días. El producto MOD11A2 está compuesto por LSTs diurnos y nocturnos que
+se pueden considerar representativos de las temperaturas máxima y mínima
+
+Además, la precipitación local se obtuvo de The Tropical Rainfall Measuring
+Mission (TRMM) [33], misión conjunta de la NASA y la Agencia de Japón que fue
+lanzada en 1997 para estudiar las precipitaciones.
+
+% Acá podriamos hacer un cuadro diciendo de donde sacamos cada variable para no
+% tener que hablar tanto.
+% Después mostrar el heatmap de todas las variables sin lag.
+
+Para extraer los indicadores geofísicos de las imágenes descriptas se definieron
+dos áreas de 85 ha (Fig. 2) y se calcularon los valores medios para todas las
+variables. La primera área está ubicada dentro de la ciudad (Área Urbana) y la
+segunda abarca la vegetación nativa que rodea la ciudad (Área Rural).
+
+La hipótesis ya utilizada en [34] es que las condiciones ambientales (NDWI,
+NDVI, LST) que rodean la ciudad podrían ser buenas indicadoras de los efectos
+climáticos y ambientales que están afectando los índices larvales dentro de la
+ciudad.
+
+\end{frame}
+
+\begin{frame}{Selección de Variables}
+
+De todas las variables ambientales recolectadas, solo algunas fueron
+seleccionadas como entradas del modelo.
+
+Esta selección se basó tanto en un análisis de las propiedades biológicas
+intrínsecas del problema como en un análisis de la correlación de las variables
+ambientales obtenidas con imágenes satelitales. El procedimiento se describe con
+más detalle en [27].
+
+Las variables seleccionadas resultaron ser: NDVI, LST nocturna y NDWI de la
+región rural y urbana con un lag de 1 semana, LST nocturna urbana con un lag de
+2 semanas, LST diurna rural y urbana con un lag de 3 semanas, TRMM con un lag de
+3 semanas, además de número de días fríos y la temperatura correspondiente a la
+región rural.
+
+% Mostrar el heatmap de todas las variables seleccionadas sin lag (para evitar
+% hablar tanto).
+
+Cabe aclarar que futuros trabajos pueden mejorar la selección de características
+para obtener mejores resultados.
+
+\end{frame}
+
+\begin{frame}{Modelos}
+
+\end{frame}
+
+\begin{frame}{Resultados}
+
+\end{frame}
+
+\begin{frame}{Conclusiones}
+
+\end{frame}
+
+\begin{frame}[standout]
+  ¿Preguntas?
+\end{frame}
+
+\appendix
+
+\begin{frame}{Referencias}
+
+[1] S. Arthur. 1958. ‘Some studies in machine learning using the game of
+checkers', IBM Journal of Research and Development, Volume:44 Issue:1.2
+
+Available from: IEEE Digital Explore Library
+
+[2] T. Mitchell .1997. ‘Machine Learning’ [pdf]
+
+Available at \url{https://www.cs.swarthmore.edu/~meeden/cs63/f11/ml-intro.pdf}
+
+  \url{https://www.researchgate.net/profile/Alfonso_Rodriguez-Morales/publication/265167661_Ecoepidemiologia_y_epidemiologia_satelital_nuevas_herramientas_en_salud_publica_y_su_utilidad_en_la_leishmaniasis_tegumentaria_americana/links/5403593a0cf2bba34c1c225d/Ecoepidemiologia-y-epidemiologia-satelital-nuevas-herramientas-en-salud-publica-y-su-utilidad-en-la-leishmaniasis-tegumentaria-americana.pdf}
+
+\end{frame}
+
+\end{document}
+
+%% \begin{frame}{Blocks}
+%%   Three different block environments are pre-defined and may be styled with an
+%%   optional background color.
+
+%%   \begin{block}{Default}
+%%     Block content.
+%%   \end{block}
+
+%%   \begin{alertblock}{Alert}
+%%     Block content.
+%%   \end{alertblock}
+
+%%   \begin{exampleblock}{Example}
+%%     Block content.
+%%   \end{exampleblock}
+%%   \stepcounter{beamerpauses}
+%%   \begin{itemize}[<+->]
+%%     \item Hola
+%%     \item Chau
+%%   \end{itemize}
+%% \end{frame}
