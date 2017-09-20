@@ -13,6 +13,8 @@
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 
+\setbeamercolor{background canvas}{bg=white}
+
 \title{XVII Reunión de trabajo en Procesamiento de la Información y Control}
 \subtitle{Modelando el patrón temporal del vector de dengue, Chikungunya y Zika
   a partir de información satelital con redes neuronales}
@@ -233,8 +235,6 @@
   \includegraphics[width=\textwidth]{linear.eps}
 \end{frame}
 
-
-
 \begin{frame}{Modelos}
   \begin{center}
     \textbf{¿Son las regresiones lineales las más adecuadas para modelar este
@@ -244,35 +244,25 @@
 
 \section{Resultados}
 
-\begin{frame}{Resultados}
-  \centering
-  Support Vector Machine Regressor
+\begin{frame}{Resultados: Support Vector Machine Regressor}
   \includegraphics[width=\textwidth]{svr.eps}
 \end{frame}
 
-\begin{frame}{Resultados}
-  \centering
-  Desicion Tree
+\begin{frame}{Resultados: Decision Tree}
   \includegraphics[width=\textwidth]{dtr.eps}
 \end{frame}
 
-\begin{frame}{Resultados}
-  \centering
-  K-Nearest Neighbour
+\begin{frame}{Resultados: K-Nearest Neighbour}
   \includegraphics[width=\textwidth]{knnr1.eps}
 \end{frame}
 
-\begin{frame}{Resultados}
-  \centering
-  Multi-layer Perceptron Regressor
+\begin{frame}{Resultados: Multi-layer Perceptron Regressor}
   \includegraphics[width=\textwidth]{mlpr.eps}
 \end{frame}
-
 
 \section{Conclusión}
 
 \begin{frame}{Conclusión}
-  \stepcounter{beamerpauses}
   \begin{itemize}[<+->]
     \item No Lineales vs Lineales
 
