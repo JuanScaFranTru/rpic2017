@@ -10,6 +10,9 @@
 
 \usepackage{xspace} \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
 \title{XVII Reunión de trabajo en Procesamiento de la Información y Control}
 \subtitle{Modelando el patrón temporal del vector de dengue, Chikungunya y Zika
   a partir de información satelital con redes neuronales}
@@ -162,23 +165,22 @@
 %%   también es software libre.
 %% \end{frame}
 
-\section{Área de estudio y Datos de Campo}
+\section{Área de estudio}
 
-\begin{frame}{Área de estudio y Datos de Campo}
-
-  %% Ponemos fotos de tartagal, salta TODO
-
-  %% La Ciudad de Tartagal se encuentra en la base de las sierras subandinas
-  %% argentinas en la provincia de Salta. La ciudad está rodeada de bosques nativos
-  %% subtropicales y cultivos. El clima es subtropical.
+\begin{frame}{Área de estudio: Tartagal}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{tartagal.jpeg}
+\end{center}
+%% La Ciudad de Tartagal se encuentra en la base de las sierras subandinas
+%% argentinas en la provincia de Salta. La ciudad está rodeada de bosques nativos
+%% subtropicales y cultivos. El clima es subtropical.
 
 \end{frame}
 
 \section{Modelos}
 
 \begin{frame}{Variables}
-
-  %% Después mostrar el heatmap de todas las variables sin lag. TODO
+  \includegraphics[width=1\textwidth]{all_variables.png}
 
   %% El uso de ovitrampas constituye un método efectivo para proporcionar datos
   %% útiles sobre la distribución espacial y temporal del Aedes aegypti.
@@ -192,7 +194,7 @@
   %% De todas las variables ambientales recolectadas, solo algunas fueron
   %% seleccionadas como entradas del modelo.
 
-  % Mostrar el heatmap de todas las variables seleccionadas. TODO
+  \includegraphics[width=1\textwidth]{selected_variables.png}
 
   %% Cabe aclarar que futuros trabajos pueden mejorar la selección de
   %% características para obtener mejores resultados.
