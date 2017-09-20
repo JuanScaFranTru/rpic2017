@@ -1,23 +1,18 @@
 \documentclass[10pt]{beamer}
 
-\usetheme{metropolis}
-\usepackage{appendixnumberbeamer}
+\usetheme{metropolis} \usepackage{appendixnumberbeamer}
 
-\usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc} \usepackage[spanish]{babel}
 
-\usepackage{booktabs}
-\usepackage[scale=2]{ccicons}
+\usepackage{booktabs} \usepackage[scale=2]{ccicons}
 
-\usepackage{pgfplots}
-\usepgfplotslibrary{dateplot}
+\usepackage{pgfplots} \usepgfplotslibrary{dateplot}
 
-\usepackage{xspace}
-\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+\usepackage{xspace} \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
 \title{XVII Reunión de trabajo en Procesamiento de la Información y Control}
-\subtitle{Modelando el patrón temporal del vector de dengue, Chikungunya y Zika a
-  partir de información satelital con redes neuronales}
+\subtitle{Modelando el patrón temporal del vector de dengue, Chikungunya y Zika
+  a partir de información satelital con redes neuronales}
 
 \date{Septiembre de 2017}
 % \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
@@ -47,214 +42,216 @@
 
 \section{Introducción}
 
-\begin{frame}{Ecoepidemiología y epidemiología satelital}
+\begin{frame}{Epidemiología panorámica}
 
-Los cambios e interacciones del medio ambiente tienen una fuerte influencia
-sobre los factores que determinan diversas enfermedades. Esto nos da la
-oportunidad de estudiar dichos factores ambientales para entender cómo
-condicionan las enfermedades humanas.
+  \begin{itemize}
+  \item Factores ambientales de riesgo para la salud 
+  %% En la epidemiología panorámica se intenta comprender cuáles son los factores
+  %% del medio ambiente que significan un riesgo para la salud del ser humano.
+  \item Hasta hace poco: Exclusivamente con datos de campo
+  %% Hasta hace poco tiempo ese estudio ecológico se realizaba exclusivamente con
+  %% información recogida en el campo, tales como temperatura, precipitaciones,
+  %% humedad relativa, salinidad, vegetación, fauna, entre otros.
+  \item Hoy en día: Productos satelitales 
+  %% Pero hoy en día, se cuenta con una herramienta adicional de gran importancia y
+  %% que define un nuevo concepto en la epidemiología, el uso de información e
+  %% imágenes satelitales.
+  \end{itemize}
 
-De allí surge la ecoepidemiología, en la cual se intenta comprender cuáles son
-los factores del medio ambiente que significan un riesgo para la salud del ser
-humano.
-
-Hasta hace poco tiempo ese estudio ecológico se realizaba exclusivamente con
-información recogida en el campo, tales como temperatura, precipitaciones,
-humedad relativa, salinidad, vegetación, fauna, entre otros.
-
-Pero hoy en día, se cuenta con una herramienta adicional de gran importancia y
-que define un nuevo concepto en la epidemiología, el uso de información e
-imágenes satelitales.
-
-Estas herramientas abren una subespecialidad de la ecoepidemiología: la llamada
-epidemiología satelital.
-
-La epidemiología satelital puede ser pensada como una aplicación de segunda
-generación de la información sensada remotamente donde el objetivo (i.e., el
-vector o el huésped) no se detecta directamente de la imagen satelital. 
+  \begin{center}
+    \textbf{Epidemiología satelital} %% TODO
+  \end{center}
 
 \end{frame}
 
-\begin{frame}{Dengue}
+\begin{frame}{Dengue, Zika y Chikungunya}
 
-  El dengue es una de las enfermedades transmitidas por vectores más importantes
-  en el mundo.
-
-  El vector de esta enfermedad en América Latina es el Aedes aegypti, mosquito
-  peridoméstico que se cría preferentemente en contenedores artificiales.
-
-  La incidencia del dengue ha aumentado dramáticamente en las últimas décadas,
-  con una tendencia creciente de brotes en Sudamérica en los últimos años. A
-  esto se le suma la creciente incidencia del virus de chikungunya y zika, cuyo
-  principal vector es la misma especie de mosquito.
-
-  El uso de ovitrampas constituye un método efectivo para proporcionar datos
-  útiles sobre la distribución espacial y temporal del Aedes aegypti y otras
-  especies de mosquitos que habitan contenedores, lo que permite obtener un
-  mejor conocimiento de su actividad.
+  \begin{itemize}
+  \item Enfermedades transmitidas por vectores %% TODO
+  %% Dengue, Zika y Chikungunya son enfermedades transmitidas por vectores.
+  %% El dengue es una de estas enfermedades más importantes en el mundo.
+  \item En América Latina el vector es el Aedes aegypti
+  %% El vector de estas enfermedades en América Latina es el Aedes aegypti,
+  %% mosquito peridoméstico que se cría preferentemente en contenedores
+  %% artificiales.
+  \item Aumento dramático de su incidencia
+  %% La incidencia del dengue ha aumentado dramáticamente en las últimas décadas,
+  %% con una tendencia creciente de brotes en Sudamérica en los últimos años. A
+  %% esto se le suma la creciente incidencia del virus de chikungunya y zika.
+  \end{itemize}
 
 \end{frame}
 
 \begin{frame}{Aprendizaje Automático (ML)}
 
-El aprendizaje automático ha resultado ser un enfoque empírico eficaz para
-regresiones y clasificaciones de sistemas no lineales. Por esto, el aprendizaje
-automático es ideal para abordar aquellos problemas donde se dispone de un
-número importante de observaciones, pero el conocimiento teórico es aún
-incompleto.
+  Definicion de que las maquinas que aprenden %% TODO
 
-Las técnicas del aprendizaje automático han demostrado ser útiles para un gran
-número de aplicaciones en geociencias, tanto para tierra, océanos y atmósfera, y
-en algoritmos de extracción de información bio-geofisica.
+\end{frame}
+
+\begin{frame}{Aprendizaje Automático (ML)}
+
+  \begin{itemize}
+  \item Eficaz para clasificaciones y regresiones de sistemas \textbf{no
+    lineales}
+  %% El aprendizaje automático ha resultado ser un enfoque empírico eficaz para
+  %% regresiones y clasificaciones de sistemas no lineales.
+  \item Ideal para problemas con:
+    \begin{itemize}
+    \item Importante número de observaciones
+    \item Conocimiento teórico incompleto
+    \end{itemize}
+  %% Por esto, el aprendizaje automático es ideal para abordar aquellos problemas
+  %% donde se dispone de un número importante de observaciones, pero el conocimiento
+  %% teórico es aún incompleto.
+  \item Tiene gran número de aplicaciones en geociencias
+    \begin{itemize}
+    \item Océanos
+    \item Atmósfera
+    \item Algoritmos de extracción de información bio-geofisica
+    \end{itemize}
+  \end{itemize}
 
 \end{frame}
 
 \begin{frame}{Enfoques del Aprendizaje Automático}
 
-Los distintos enfoques del aprendizaje automático mayormente utilizados en
-geociencias y sensado remoto incluyen [7]:
+  %% Los distintos enfoques del aprendizaje automático mayormente utilizados en
+  %% geociencias y sensado remoto incluyen:
 
-\begin{itemize}
-\item artificial neural networks (ANN)
-\item support vector machines (SVM)
-\item self-organizing map (SOM)
-\item decision trees (DT)
-\item random forests (RF)
-\item genetic algorithms (GA)
-\end{itemize}
-
-Esta área del Geoscience and Remote Sensing (GRS) es relativamente nueva y
-extremadamente prometedora ([7], [8]).
-
-En particular, las Redes Neuronales Artificiles, son ampliamente utilizadas para
-clasificación, pero también para predicciones de series de tiempo ([9], [10],
-[11], [12]).
-
-De hecho, una exploración en la base bibliográfica scopus nos arroja una
-cantidad de más de 4000 publicaciones que incluyen remote sensing y neural
-network con 311 publicaciones para el 2016.
+  \begin{itemize}
+  \item Linear Models
+  \item Artificial Neural Networks
+  \item Support vector machines
+  \item K-Nearest Neighbour
+  \item Decision trees
+  \end{itemize}
 
 \end{frame}
 
 \begin{frame}{Scikit Learn}
+
   Scikit Learn es una librería de Python para aprendizaje automático que
-  implementa muchos algoritmos de clasificación y regresión.  
+  implementa muchos algoritmos de clasificación y regresión.
 
-  ¿Por qué esta librería? ¿Por qué Python?
+  ¿Por qué Python? ¿Por qué esta librería?
 
-  \begin{itemize} 
-  \item Python es uno de los lenguajes que han presenciado un crecimiento
-    formidable en el ámbito académico en los últimos años además de ser uno de
-    los más usados.
-  \item Tanto Python como Scikit Learn son software libre.
-  \item Hay una comunidad muy activa.
-  \item Facilita el trabajo interdisciplinario debido a la baja complejidad de
-    la herramienta.
+  \begin{itemize}
+  \item Muy usado en el ámbito científico
+  %% Python es uno de los lenguajes que han presenciado un crecimiento
+  %% formidable en el ámbito académico en los últimos años además de ser uno de
+  %% los más usados
+  \item Tanto Python como Scikit Learn son software libre
+  \item Hay una comunidad muy activa
+  \item Fáciles de usar
   \end{itemize}
 
-  Uno de los objetivos de este trabajo fue usar algoritmos y herramientas
-  \textbf{off-the-shelf}.
+  %% Usamos el envi para obtener resultados de manera exploratoria
+  %% Python es mucho más flexible para este tipo de problemas
+  %% Uno de los objetivos de este trabajo fue usar algoritmos y herramientas
+  %% \textbf{off-the-shelf}
 
 \end{frame}
 
-\begin{frame}{iRace}
+%% \begin{frame}{iRace}
+%%   - Algunos modelos dependen de parámetros. Por ejemplo: [decision tree]
+%%   Encontrar la mejor configuración de esos parámetros para resolver un problema
+%%   constituye todo un desafío. Explicar maaaaomeno por qué.
+%%   - iRace (Iterated Racing for Automatic Algorithm Configuration).
+%%   Fue utilizada para encontrar las mejores configuraciones de parámetros dadas
+%%   las instancias del problema. Queremos aclarar que está implementada en R y
+%%   también es software libre.
+%% \end{frame}
 
-  Como veremos luego, algunos modelos dependen de parámetros. Encontrar la mejor
-  configuración de esos parámetros para resolver un problema constituye todo un
-  desafío.
-
-  Una herramienta llamada iRace (Iterated Racing for Automatic Algorithm
-  Configuration) fue utilizada para realizar encontrar las mejores
-  configuraciones de parámetros dadas las instancias del problema.
-
-  Queremos aclarar que está implementada en R y también es software libre.
-
-\end{frame}
+\section{Área de estudio y Datos de Campo}
 
 \begin{frame}{Área de estudio y Datos de Campo}
 
-La Ciudad de Tartagal se encuentra en la base de las sierras subandinas
-argentinas en la provincia de Salta. La ciudad está rodeada de bosques nativos
-subtropicales y cultivos. El clima es subtropical, con una temperatura media
-anual de unos 23; con máximas promedio de 39 y mínimas promedio de 9. La
-precipitación anual es de unos 1100 mm, con una estación seca de junio a octubre
-y una estación húmeda de noviembre a mayo con una precipitación mensual media de
-160 mm mensuales. El área urbana de la ciudad de Tartagal cubre aproximadamente
-15 $km^2$ y está compuesta por unas 18.000 viviendas.
+  %% Ponemos fotos de tartagal, salta TODO
 
-%% Acá deberíamos poner una imagen y tratar de decir mucho menos que lo que está
-%% escrito.
+  %% La Ciudad de Tartagal se encuentra en la base de las sierras subandinas
+  %% argentinas en la provincia de Salta. La ciudad está rodeada de bosques nativos
+  %% subtropicales y cultivos. El clima es subtropical.
+
+\end{frame}
+
+\section{Modelos}
+
+\begin{frame}{Variables}
+
+  %% Después mostrar el heatmap de todas las variables sin lag. TODO
+
+  %% El uso de ovitrampas constituye un método efectivo para proporcionar datos
+  %% útiles sobre la distribución espacial y temporal del Aedes aegypti.
+  %% Se usaron productos satelitales que se analizaron influyentes para el
+  %% medioambiente del mosquito según análisis de nuestro equipo de trabajo.
 
 \end{frame}
 
 \begin{frame}{Variables}
-Para caracterizar el hábitat de los mosquitos se obtuvieron variables derivadas
-de imágenes de satelitales (principalmente del sensor MODIS), a saber: NDVI,
-NDWI, LST y la precipitación.
 
-El índice de vegetación de diferencia normalizada (NDVI) y el índice diferencial
-de agua normalizada (NDWI) se obtuvo a partir del producto del sensor MODIS
-MOD13Q1 (16 días) con una resolución espacial de 250m.
+  %% De todas las variables ambientales recolectadas, solo algunas fueron
+  %% seleccionadas como entradas del modelo.
 
-Para el LST se seleccionó el producto satelital MOD11A2, que se almacena en una
-grilla de 1 km como los valores medios de LSTs de cielo claro durante un período
-de 8 días. El producto MOD11A2 está compuesto por LSTs diurnos y nocturnos que
-se pueden considerar representativos de las temperaturas máxima y mínima
+  % Mostrar el heatmap de todas las variables seleccionadas. TODO
 
-Además, la precipitación local se obtuvo de The Tropical Rainfall Measuring
-Mission (TRMM) [33], misión conjunta de la NASA y la Agencia de Japón que fue
-lanzada en 1997 para estudiar las precipitaciones.
-
-% Acá podriamos hacer un cuadro diciendo de donde sacamos cada variable para no
-% tener que hablar tanto.
-% Después mostrar el heatmap de todas las variables sin lag.
-
-Para extraer los indicadores geofísicos de las imágenes descriptas se definieron
-dos áreas de 85 ha (Fig. 2) y se calcularon los valores medios para todas las
-variables. La primera área está ubicada dentro de la ciudad (Área Urbana) y la
-segunda abarca la vegetación nativa que rodea la ciudad (Área Rural).
-
-La hipótesis ya utilizada en [34] es que las condiciones ambientales (NDWI,
-NDVI, LST) que rodean la ciudad podrían ser buenas indicadoras de los efectos
-climáticos y ambientales que están afectando los índices larvales dentro de la
-ciudad.
-
-\end{frame}
-
-\begin{frame}{Selección de Variables}
-
-De todas las variables ambientales recolectadas, solo algunas fueron
-seleccionadas como entradas del modelo.
-
-Esta selección se basó tanto en un análisis de las propiedades biológicas
-intrínsecas del problema como en un análisis de la correlación de las variables
-ambientales obtenidas con imágenes satelitales. El procedimiento se describe con
-más detalle en [27].
-
-Las variables seleccionadas resultaron ser: NDVI, LST nocturna y NDWI de la
-región rural y urbana con un lag de 1 semana, LST nocturna urbana con un lag de
-2 semanas, LST diurna rural y urbana con un lag de 3 semanas, TRMM con un lag de
-3 semanas, además de número de días fríos y la temperatura correspondiente a la
-región rural.
-
-% Mostrar el heatmap de todas las variables seleccionadas sin lag (para evitar
-% hablar tanto).
-
-Cabe aclarar que futuros trabajos pueden mejorar la selección de características
-para obtener mejores resultados.
+  %% Cabe aclarar que futuros trabajos pueden mejorar la selección de
+  %% características para obtener mejores resultados.
 
 \end{frame}
 
 \begin{frame}{Modelos}
-
+  %% TODO Imágenes de modelos lineales
 \end{frame}
+
+\begin{frame}{Modelos}
+  \begin{center}
+    \textbf{¿Son las regresiones lineales las más adecuadas para modelar este
+      tipo de problemas?}
+  \end{center}
+\end{frame}
+  
+\section{Resultados}
 
 \begin{frame}{Resultados}
-
+  %% TODO Poner las imágenes
 \end{frame}
 
-\begin{frame}{Conclusiones}
+\section{Conclusión}
 
+\begin{frame}{Conclusión}
+  \begin{itemize}
+    \item No Lineales > Lineales
+
+    \item Herramientas off-the-shelf
+      %% Los modelos no lineales funcionan mejor que los modelos lineales.
+      %% Aunque los modelos no lineales involucran una mayor complejidad a la
+      %% hora de implementarlos, existen muchas herramientas off-the-shelf que
+      %% facilitan esta tarea.
+
+    \item Técnicas pocas veces utilizadas en problemáticas epidemiológicas
+      %% La gran perspectiva en la utilización de este tipo de herramientas en
+      %% este campo. Introducir técnicas sofisticadas como las de aprendizaje
+      %% automático, pocas veces utilizadas en problemáticas epidemiológicas.
+    
+    \item Modelos operativos en el ámbito de la epidemiología
+      %% La intención es que con estas herramientas se pueda desarrollar un
+      %% sistema que pueda ser utilizado para llevar a cabo políticas de salud
+      %% pública. El trabajo fue proyectado de manera que pudiera ser articulado
+      %% con otros esfuerzos tendientes a avanzar en las direcciones
+      %% establecidas por un proyecto institucional cuyo objetivo es abordar la
+      %% problemática de la epidemiología.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Trabajos futuros: Cómo mejorar los resultados}
+      \begin{itemize}
+        \item Aumentando la cantidad de datos
+        \item Haciendo una mejor selección de características
+        \item Entrenando sobre otras ciudades
+        %% Los dos primeros mejoran la capacidad predictiva del modelo
+        %% El último permite que los modelos puedan ser aplicados a otras
+        %% regiones geográficas.
+      \end{itemize}
 \end{frame}
 
 \begin{frame}[standout]
@@ -270,7 +267,7 @@ checkers', IBM Journal of Research and Development, Volume:44 Issue:1.2
 
 Available from: IEEE Digital Explore Library
 
-[2] T. Mitchell .1997. ‘Machine Learning’ [pdf]
+[2] T. Mitchell. 1997. ‘Machine Learning’ [pdf]
 
 Available at \url{https://www.cs.swarthmore.edu/~meeden/cs63/f11/ml-intro.pdf}
 
