@@ -1,21 +1,21 @@
 \documentclass[10pt]{beamer}
 
-\usetheme{metropolis} \usepackage{appendixnumberbeamer}
-
-\usepackage[utf8]{inputenc} \usepackage[spanish]{babel}
-
-\usepackage{booktabs} \usepackage[scale=2]{ccicons}
-
-\usepackage{pgfplots} \usepgfplotslibrary{dateplot}
-
-\usepackage{xspace} \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
-
+\usetheme{metropolis}
+\usepackage{appendixnumberbeamer}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{xspace}
 \usepackage{csquotes}
-
 \usepackage{graphicx}
-\graphicspath{ {images/} }
+\usepackage{verbatim}
+\usepackage{listings}
 
-\setbeamercolor{background canvas}{bg=white}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+\graphicspath{ {images/} }
 
 \title{XVII Reunión de trabajo en Procesamiento de la Información y Control}
 \subtitle{Modelando el patrón temporal del vector de dengue, Chikungunya y Zika
@@ -40,6 +40,8 @@
     Alba German, Manuel Espinosa, Marcelo Abril
 	\end{alertblock}
 \end{frame}
+
+\setbeamercolor{background canvas}{bg=white}
 
 \begin{frame}{Contenidos}
   \setbeamertemplate{section in toc}[sections numbered]
@@ -144,6 +146,65 @@
 
 \end{frame}
 
+\begin{frame}{Las tres etapas de desarrollo de un modelo en ML}
+  \begin{itemize}[<+->]
+  \item Arquitectura y ajuste de parámetros
+  \item Entrenamiento y validación 
+  \item Utilización del modelo con datos nuevos
+  \end{itemize}
+\end{frame}
+
+\defverbatim[colored]\lstI{
+\begin{lstlisting}[language=Python]
+  KNeighborsRegressor(n_neighbors, weights, algorithm,
+                      leaf_size, p, metric,
+                      metric_params, n_jobs, **kargs)
+\end{lstlisting}
+}
+
+\begin{frame}{Ajuste de parámetros}
+  \begin{itemize}[<+->]
+  \item Algunos modelos dependen de parámetros.
+
+  \item Ejemplo: \textbf{Ridge Regression}
+
+  \item[] $$\hat{y}(w, x) = w_0 + w_1 x_1 + ... + w_p x_p$$
+
+  \item[] $$\underset{w}{min\,}{{||X w - y||_2}}^2 + \alpha{||w||_2}^2$$
+
+  \item Algunos modelos tienen aún más parámetros...
+
+  \item[] \lstI
+
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Entrenamiento y Validación}
+
+  \begin{itemize}[<+->]
+  \item Ejemplo: \textbf{Ridge Regression}
+
+  \item[] $$\hat{y}(w, x) = w_0 + w_1 x_1 + ... + w_p x_p$$
+
+  \item[] $$\underset{w}{min\,}{{||X w - y||_2}}^2 + \alpha{||w||_2}^2$$
+
+  \item Se obtienen las variables del modelo
+
+  \item Pero... ¿qué tan bueno es modelo según \textbf{cierta medida}?
+
+  \item (Datos de entrenamiento, Datos de validación) 
+
+  \item \textbf{Problema}: Los resultados pueden depender de una selección particular de
+    este par
+
+  \item \textbf{Solución}: Cross validation
+
+  \end{itemize}
+\end{frame}
+
+\section{Herramientas}
+
 \begin{frame}{Scikit Learn}
 
   Scikit Learn es una librería de Python para aprendizaje automático que
@@ -169,25 +230,31 @@
 
 \end{frame}
 
-%% \begin{frame}{iRace}
-%%   - Algunos modelos dependen de parámetros. Por ejemplo: [decision tree]
-%%   Encontrar la mejor configuración de esos parámetros para resolver un problema
-%%   constituye todo un desafío. Explicar maaaaomeno por qué.
-%%   - iRace (Iterated Racing for Automatic Algorithm Configuration).
-%%   Fue utilizada para encontrar las mejores configuraciones de parámetros dadas
-%%   las instancias del problema. Queremos aclarar que está implementada en R y
-%%   también es software libre.
-%% \end{frame}
+\begin{frame}{Iterated Racing for Automatic Algorithm Configuration (iRace)}
+  \begin{itemize}[<+->]
+  \item Ajusta los parámetros automáticamente
+    %% Procedimiento iterativo capaz de encontrar automáticamente la
+    %% configuración más adecuada de parámetros dado un conjunto de instancias
+    %% del problema de optimización
+  \item Realiza una búsqueda inteligente en el espacio de parámetros
+  \item Muy útil para selección y comparación de modelos
+  %% Dado que es crucial reducir el cesgo al comparar diferentes algoritmos, el
+  %% ajuste de parámetros manual no es ideal.
+  \item Implementada en R
+  \item Software libre 
+  \item Ha sido utilizada en trabajos similares
+  \end{itemize}
+\end{frame}
 
 \section{Área de estudio}
 
 \begin{frame}{Área de estudio: Tartagal}
-\begin{center}
-\includegraphics[width=0.9\textwidth]{tartagal.jpeg}
-\end{center}
-%% La Ciudad de Tartagal se encuentra en la base de las sierras subandinas
-%% argentinas en la provincia de Salta. La ciudad está rodeada de bosques nativos
-%% subtropicales y cultivos. El clima es subtropical.
+  \begin{center}
+  \includegraphics[width=0.9\textwidth]{tartagal.jpeg}
+  \end{center}
+  %% La Ciudad de Tartagal se encuentra en la base de las sierras subandinas
+  %% argentinas en la provincia de Salta. La ciudad está rodeada de bosques nativos
+  %% subtropicales y cultivos. El clima es subtropical.
 
 \end{frame}
 
@@ -263,6 +330,12 @@
 
 \begin{frame}{Resultados: Multi-layer Perceptron Regressor}
   \includegraphics[width=\textwidth]{mlpr.eps}
+\end{frame}
+
+\begin{frame}{Resultados: Comparación de modelos}
+  \begin{center}
+  \includegraphics[width=0.75\textwidth]{scatterplot.png}
+  \end{center}
 \end{frame}
 
 \section{Conclusión}
